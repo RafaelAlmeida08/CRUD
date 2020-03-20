@@ -3,30 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
 
-    public function verificar_logado()
+    public function index()
     {
-        if($this->session->userdata('logado')==false)
-        {
-          redirect('logar');
-        }
-    }   
-
-
-    public function index_admin()
-    {
-        $this->verificar_logado();
-        $this->load->view('templates/admin/header');        
-        $this->load->model('usuario/listar_model');
-        $dados['usuario'] = $this->listar_model->listaUsuarios();        
-        $this->load->view('admin/usuario/listar',$dados);  
-        $this->load->view('templates/footer');         
-            
-    }
-
-    public function index_user()
-    {
-        $this->verificar_logado();
-        $this->load->view('templates/admin/header');        
+        $this->load->view('templates/header');
+        $this->load->view('templates/menu');
         $this->load->model('usuario/listar_model');
         $dados['usuario'] = $this->listar_model->listaUsuarios();        
         $this->load->view('usuarios/listar',$dados);  
@@ -36,15 +16,13 @@ class Usuario extends CI_Controller {
 
     public function paginaCadastro()
     {
-        $this->verificar_logado();
-        $this->load->view('templates/admin/header');         
+        $this->load->view('templates/header');         
         $this->load->view('usuarios/cadastrar');  
         $this->load->view('templates/footer');        
     }
 
     public function cadastraUsuario()
     {
-        $this->verificar_logado();
         $dados = [
 
             'usuario_nome'       => $this->input->post('nome'),
@@ -59,13 +37,13 @@ class Usuario extends CI_Controller {
         $this->load->model('usuario/cadastrar_model'); 
         if($this->cadastrar_model->inserir($dados))
         {
-            $this->load->view('templates/admin/header'); 
+            $this->load->view('templates/header'); 
             $this->load->view('mensagens/msg_sucesso');
             $this->load->view('home');  
             $this->load->view('templates/footer');
         }else
         {
-            $this->load->view('templates/admin/header'); 
+            $this->load->view('templates/header'); 
             $this->load->view('mensagens/msg_erro');
             $this->load->view('home');  
             $this->load->view('templates/footer');
@@ -74,7 +52,6 @@ class Usuario extends CI_Controller {
 
     public function deletaUsuario($id)
     {
-        $this->verificar_logado();
         $this->load->model('usuario/excluir_model');
         if($this->excluir_model->excluir($id))
         {
@@ -84,7 +61,7 @@ class Usuario extends CI_Controller {
             $this->load->view('templates/footer');
         }else
         {
-            $this->load->view('templates/admin/header'); 
+            $this->load->view('templates/header'); 
             $this->load->view('mensagens/msg_erro');
             $this->load->view('home');  
             $this->load->view('templates/footer');
@@ -93,8 +70,7 @@ class Usuario extends CI_Controller {
 
     public function listaAtualizar($id)
     {
-        $this->verificar_logado();
-        $this->load->view('templates/admin/header');
+        $this->load->view('templates/header');
         $this->load->model('usuario/atualizar_model');
         $dados['usuario'] = $this->atualizar_model->listaUsuario($id);
         $this->load->view('usuarios/atualizar',$dados);
@@ -102,22 +78,20 @@ class Usuario extends CI_Controller {
     }
 
     public function atualizar()
-    {     
-        $this->verificar_logado();       
+    {            
         $this->load->model('usuario/atualizar_model');
         if($this->atualizar_model->atualizaUsuario())
         {
-            $this->load->view('templates/admin/header'); 
+            $this->load->view('templates/header'); 
             $this->load->view('mensagens/msg_sucesso');
             $this->load->view('home');  
             $this->load->view('templates/footer');
         }else
         {
-            $this->load->view('templates/admin/header'); 
+            $this->load->view('templates/header'); 
             $this->load->view('mensagens/msg_erro');
             $this->load->view('home');  
             $this->load->view('templates/footer');
         }     
     }
-
 }

@@ -17,15 +17,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="logo">
                     <img src="<?=base_url();?>assets/img/logo.png">
                 </div>
-                <div class="form-login ajustaform " >
-                    <form action="<?=base_url();?>logar/logarusuario" method="post">
+                <div class="form-login ajustaform   " action="<?php echo site_url('index.php/login_controller/entrar');?>" method="post">
+                    <form>
                         <div class="form-group form-inline">
                             <label for="exampleInputEmail1 col-xs-2">Email:</label>
-                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
                         </div>
                         <div class="form-group form-inline">
                             <label for="exampleInputPassword1">Senha:</label>
-                            <input name="senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
                         </div>
                         <div class="botao-login">
                             <button type="submit" class="btn btn-primary">Entrar</button>
