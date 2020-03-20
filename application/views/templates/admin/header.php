@@ -32,9 +32,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav">
-                                        <li class="nav-item active"><a class="nav-link" href="<?=base_url()?>">Home</a></li>                                
-                                        <li class="nav-item"><a class="nav-link" href="<?=base_url()?>usuario">Usuários</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?=base_url()?>usuario/paginaCadastro">Cadastrar</a></li>                
+                                        <li class="nav-item active"><a class="nav-link" href="<?=base_url()?>home">Home</a></li>                                
+                                        <li class="nav-item"><a class="nav-link" href="<?=base_url()?>usuario/index_admin">Usuários</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="<?=base_url()?>usuario/paginaCadastro">Cadastrar</a></li> 
+                                        <li class="nav-item"><a class="nav-link" href="<?=base_url()?>logar/sair">Sair</a></li>                 
                                 </ul>
                          </div>
                 </nav>
